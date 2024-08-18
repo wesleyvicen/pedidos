@@ -214,7 +214,7 @@ document.getElementById('productForm').addEventListener('submit', function(e) {
     }
 
     // Coloque o token diretamente aqui
-    const token = "YOUR_WEBHOOK_TOKEN";
+    const token = process.env.WEBHOOK_TOKEN;
 
     // URL do webhook com o token adicionado
     const url = `https://script.google.com/macros/s/${token}/exec`;
