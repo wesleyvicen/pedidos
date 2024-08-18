@@ -213,11 +213,12 @@ document.getElementById('productForm').addEventListener('submit', function(e) {
         return;
     }
 
-    // Acesse a variável de ambiente (supondo que você esteja usando Node.js ou outro ambiente que suporte process.env)
-    const token = process.env.WEBHOOK_TOKEN;
+    // Coloque o token diretamente aqui
+    const token = "YOUR_WEBHOOK_TOKEN";
 
     // URL do webhook com o token adicionado
     const url = `https://script.google.com/macros/s/${token}/exec`;
+
 
 // Agora a URL completa será construída utilizando a variável de ambiente.
 
