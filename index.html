@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Cadastro de Produtos - Escolha a Categoria</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Cadastro de Produtos</h2>
+
+        <!-- Tela de Seleção de Categoria -->
+        <div id="categorySelection">
+            <h3>Escolha a Categoria</h3>
+            <select id="categorySelect">
+                <option value="">Selecione uma Categoria</option>
+                <option value="Restauracao">Restauração</option>
+                <option value="Anestesico">Anestésico</option>
+                <option value="Limpeza">Limpeza</option>
+                <option value="Ortodontia">Ortodontia</option>
+                <option value="Descartaveis">Descartáveis</option>
+                <option value="Moldagem">Moldagem</option>
+                <option value="Esterilizacao">Esterilização</option>
+                <option value="Clareamento">Clareamento</option>
+                <option value="Radiografia">Radiografia</option>
+                <option value="Mercado">Mercado</option>
+            </select>
+            <button id="selectCategoryButton">Selecionar Categoria</button>
+        </div>
+
+        <!-- Tela de Seleção de Produtos -->
+        <div id="productSelection" style="display:none;">
+            <h3 id="selectedCategoryTitle">Produtos da Categoria: </h3>
+            <form id="productForm">
+                <div class="form-group">
+                    <label>Selecione os Produtos e Quantidades:</label>
+                    <div class="checkbox-group" id="productList">
+                        <!-- Produtos serão carregados aqui dinamicamente -->
+                    </div>
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+            <div id="responseMessage"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
