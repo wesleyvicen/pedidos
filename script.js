@@ -1,11 +1,34 @@
+// Dados dos produtos organizados por categoria
 const productsData = {
     "Restauracao": [
         { name: "Acido foscorico", campoAberto: false },
         { name: "Adesivo", campoAberto: false },
         { name: "Ionomero", campoAberto: false },
         { name: "Carbono", campoAberto: false },
-        { name: "Resina (Campo Aberto)", campoAberto: true },
-        // Continue adicionando os produtos de "Restauração"
+        { name: "Resina", campoAberto: true },
+        { name: "Dycal", campoAberto: false },
+        { name: "MicroBrush", campoAberto: true },
+        { name: "Fio Dental", campoAberto: false },
+        { name: "ZOE", campoAberto: false },
+        { name: "Vaselina solida", campoAberto: false },
+        { name: "Hidroxido PA", campoAberto: false },
+        { name: "Discos de Polimento", campoAberto: true },
+        { name: "Mandril", campoAberto: false },
+        { name: "Lixa de Resina", campoAberto: false },
+        { name: "Lixa de aço", campoAberto: false },
+        { name: "Matriz", campoAberto: true },
+        { name: "Tiras de Poliéster", campoAberto: false },
+        { name: "Cinta Profilática", campoAberto: false },
+        { name: "Pincel", campoAberto: false },
+        { name: "Fio Retrator", campoAberto: false },
+        { name: "Hemostop", campoAberto: false },
+        { name: "Tricresol", campoAberto: false },
+        { name: "Formocresol", campoAberto: false },
+        { name: "Otosporin", campoAberto: false },
+        { name: "Fluor", campoAberto: false },
+        { name: "Matriz Pre-moldada", campoAberto: false },
+        { name: "Cunha", campoAberto: false },
+        { name: "Resina Flow", campoAberto: false }
     ],
     "Anestesico": [
         { name: "BenzoTop", campoAberto: false },
@@ -19,16 +42,61 @@ const productsData = {
         { name: "Pedra Pomes", campoAberto: false }
     ],
     "Ortodontia": [
-        { name: "Tubo simples (Campo Aberto)", campoAberto: true },
-        { name: "Tubo duplo (Campo Aberto)", campoAberto: true },
-        // Continue adicionando os produtos de "Ortodontia"
+        { name: "Tubo simples", campoAberto: true },
+        { name: "Tubo duplo", campoAberto: true },
+        { name: "Tubo simples conversivel", campoAberto: true },
+        { name: "Tubo triplo", campoAberto: true },
+        { name: "Botão lingual", campoAberto: true },
+        { name: "Stop", campoAberto: true },
+        { name: "Esporão", campoAberto: false },
+        { name: "Tubo cruzado", campoAberto: false },
+        { name: "Gancho Bola", campoAberto: false },
+        { name: "Aparelho autoligado", campoAberto: false },
+        { name: "Aparelho convencional", campoAberto: false },
+        { name: "Fio niti", campoAberto: true },
+        { name: "Fios de Aço", campoAberto: true },
+        { name: "Fio Termo Ativado", campoAberto: true },
+        { name: "Fio copper niti", campoAberto: true },
+        { name: "Elastico corrente", campoAberto: true },
+        { name: "Elastico unitario", campoAberto: true },
+        { name: "Amarrilho 010 / 008 / 012", campoAberto: false },
+        { name: "Caixa para elastico", campoAberto: false },
+        { name: "Cera Ortodontica", campoAberto: false },
+        { name: "Saqinho para elastico intraoral", campoAberto: false },
+        { name: "Elasticos intraoral", campoAberto: true },
+        { name: "Caixa de aparelho", campoAberto: false },
+        { name: "Elastico separador", campoAberto: false },
+        { name: "Placa rigida 1mm", campoAberto: false },
+        { name: "Placa rigida 2mm", campoAberto: false },
+        { name: "Mola Aberta", campoAberto: false },
+        { name: "Mola Fechada", campoAberto: false },
+        { name: "Protetor de fio", campoAberto: false },
+        { name: "Fio TMA Vareta", campoAberto: false }
     ],
     "Descartaveis": [
         { name: "Luva", campoAberto: false },
         { name: "Agulha gengival 25mm", campoAberto: false },
         { name: "Bisturi 15", campoAberto: false },
         { name: "Fio de sutura 3/8*** 3-0", campoAberto: false },
-        // Continue adicionando os produtos de "Descartáveis"
+        { name: "Sugador normal", campoAberto: false },
+        { name: "Sugador cirugico", campoAberto: false },
+        { name: "Touca", campoAberto: false },
+        { name: "Babador", campoAberto: false },
+        { name: "Capote", campoAberto: false },
+        { name: "Gaze", campoAberto: false },
+        { name: "Gaze não esteril", campoAberto: false },
+        { name: "Algodão", campoAberto: false },
+        { name: "Mascara Cirurgica", campoAberto: false },
+        { name: "Mascara descartavel", campoAberto: false },
+        { name: "Lençol de borracha", campoAberto: false },
+        { name: "Copo descatavel", campoAberto: false },
+        { name: "Papel toalha dobrado", campoAberto: false },
+        { name: "Papel toalha rolo", campoAberto: false },
+        { name: "Etiqueta de preço", campoAberto: false },
+        { name: "Pano de chão", campoAberto: false },
+        { name: "Luva Limpeza pesada (P)", campoAberto: false },
+        { name: "Toalha de mão Branco", campoAberto: false },
+        { name: "Bolsa hotdog", campoAberto: false }
     ],
     "Moldagem": [
         { name: "Alginato", campoAberto: false },
@@ -44,7 +112,8 @@ const productsData = {
         { name: "Placa flexivel 1mm", campoAberto: false },
         { name: "Gel clareador caseiro", campoAberto: false },
         { name: "Gel clareador consultório", campoAberto: false },
-        { name: "Dessensibilizante Gluma", campoAberto: false }
+        { name: "Dessensibilizante Gluma", campoAberto: false },
+        { name: "Top dam", campoAberto: false }
     ],
     "Radiografia": [
         { name: "Filme", campoAberto: false },
@@ -55,8 +124,18 @@ const productsData = {
         { name: "Alcool 70ª", campoAberto: false },
         { name: "Agua sanitaria", campoAberto: false },
         { name: "Bolsa de Lixo preta", campoAberto: false },
-        { name: "Bolsa de lixo Infectado", campoAberto: false }
-        // Continue adicionando os produtos de "Mercado"
+        { name: "Bolsa de lixo Infectado", campoAberto: false },
+        { name: "Papel higienico", campoAberto: false },
+        { name: "Papel reutilizavel", campoAberto: false },
+        { name: "Lustra moveis", campoAberto: false },
+        { name: "Desinfetante", campoAberto: false },
+        { name: "Bom Ar", campoAberto: false },
+        { name: "Sabonete liquido", campoAberto: false },
+        { name: "Bombril", campoAberto: false },
+        { name: "Veja Gold multiuso azul", campoAberto: false },
+        { name: "Bucha (Esponja)", campoAberto: false },
+        { name: "Pastilha agua azul", campoAberto: false },
+        { name: "Vassoura do Mop", campoAberto: false }
     ]
 };
 
@@ -71,6 +150,16 @@ function saveFormData() {
         const observation = observationInput ? observationInput.value : '';
 
         formData[product] = { quantity, observation };
+    });
+
+    // Salva campos "Outro"
+    const otherFields = Array.from(document.querySelectorAll('.other-product-input'));
+    otherFields.forEach(input => {
+        const product = input.value.trim();
+        if (product) {
+            const quantity = input.nextElementSibling.value;
+            formData[product] = { quantity };
+        }
     });
 
     localStorage.setItem('formData', JSON.stringify(formData));
@@ -94,6 +183,14 @@ function loadFormData() {
                 observationInput.value = formData[product].observation;
                 observationInput.style.display = 'block';
             }
+        } else {
+            // Restaura os campos "Outro"
+            const otherField = createOtherField();
+            otherField.querySelector('.other-product-input').value = product;
+            const quantityInput = otherField.querySelector('input[type="number"]');
+            quantityInput.disabled = false;
+            quantityInput.value = formData[product].quantity;
+            document.getElementById('productList').appendChild(otherField);
         }
     });
 }
@@ -103,6 +200,43 @@ function clearFormData() {
     localStorage.removeItem('formData');
 }
 
+function createOtherField() {
+    const otherItem = document.createElement('div');
+    otherItem.classList.add('product-item');
+
+    const productInput = document.createElement('input');
+    productInput.type = 'text';
+    productInput.placeholder = 'Digite outro produto';
+    productInput.classList.add('other-product-input');
+
+    const quantityInput = document.createElement('input');
+    quantityInput.type = 'number';
+    quantityInput.placeholder = 'Qtd';
+    quantityInput.min = 1;
+    quantityInput.disabled = true;
+
+    otherItem.appendChild(productInput);
+    otherItem.appendChild(quantityInput);
+
+    productInput.addEventListener('input', function () {
+        if (productInput.value.trim() !== '') {
+            quantityInput.disabled = false;
+            if (!otherItem.nextElementSibling || !otherItem.nextElementSibling.classList.contains('product-item')) {
+                const newOtherField = createOtherField();
+                otherItem.parentNode.appendChild(newOtherField);
+            }
+        } else {
+            quantityInput.disabled = true;
+            quantityInput.value = '';
+            if (otherItem.nextElementSibling && otherItem.nextElementSibling.classList.contains('product-item')) {
+                otherItem.nextElementSibling.remove();
+            }
+        }
+    });
+
+    return otherItem;
+}
+
 document.getElementById('selectCategoryButton').addEventListener('click', function() {
     const selectedCategory = document.getElementById('categorySelect').value;
     if (!selectedCategory) {
@@ -110,12 +244,10 @@ document.getElementById('selectCategoryButton').addEventListener('click', functi
         return;
     }
 
-    // Atualiza o título com a categoria selecionada
     document.getElementById('selectedCategoryTitle').textContent = `Produtos da Categoria: ${selectedCategory}`;
 
-    // Gera a lista de produtos com base na categoria selecionada
     const productList = document.getElementById('productList');
-    productList.innerHTML = ''; // Limpa a lista anterior
+    productList.innerHTML = '';
 
     if (productsData[selectedCategory]) {
         productsData[selectedCategory].forEach(product => {
@@ -140,22 +272,20 @@ document.getElementById('selectCategoryButton').addEventListener('click', functi
             productItem.appendChild(productLabel);
             productItem.appendChild(quantityInput);
 
-            // Adiciona campo de observação se o produto for "Campo Aberto"
             if (product.campoAberto) {
                 const observationInput = document.createElement('input');
                 observationInput.type = 'text';
                 observationInput.name = `${productName}-observation`;
                 observationInput.placeholder = 'Observação';
-                observationInput.style.display = 'none'; // Inicialmente escondido
+                observationInput.style.display = 'none';
                 productItem.appendChild(observationInput);
 
-                // Exibe o campo de observação quando o checkbox for marcado
                 productLabel.querySelector('input[type="checkbox"]').addEventListener('change', function() {
                     if (this.checked) {
                         observationInput.style.display = 'block';
                     } else {
                         observationInput.style.display = 'none';
-                        observationInput.value = ''; // Limpa o campo de observação se desmarcado
+                        observationInput.value = '';
                     }
                 });
             }
@@ -163,11 +293,13 @@ document.getElementById('selectCategoryButton').addEventListener('click', functi
             productList.appendChild(productItem);
         });
 
-        // Exibe a tela de produtos e oculta a tela de categorias
+        // Adiciona o primeiro campo "Outro"
+        const otherField = createOtherField();
+        productList.appendChild(otherField);
+
         document.getElementById('categorySelection').style.display = 'none';
         document.getElementById('productSelection').style.display = 'block';
 
-        // Habilita o campo de quantidade quando o produto for selecionado
         document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
             checkbox.addEventListener('change', function() {
                 const quantityInput = document.querySelector(`input[name="${this.value}-quantity"]`);
@@ -182,12 +314,10 @@ document.getElementById('selectCategoryButton').addEventListener('click', functi
             });
         });
 
-        // Salva os dados quando os campos de quantidade e observação são preenchidos
         document.querySelectorAll('input[type="number"], input[type="text"]').forEach(input => {
             input.addEventListener('input', saveFormData);
         });
 
-        // Carrega os dados salvos
         loadFormData();
     } else {
         console.error('Categoria selecionada não existe nos dados fornecidos.');
@@ -207,36 +337,69 @@ document.getElementById('productForm').addEventListener('submit', function(e) {
             return { category: selectedCategory, product, quantity, observation };
         });
 
+    // Captura os campos "Outro"
+    const otherFields = Array.from(document.querySelectorAll('.other-product-input'));
+    otherFields.forEach(input => {
+        const product = input.value.trim();
+        if (product) {
+            const quantity = input.nextElementSibling.value;
+            selectedProducts.push({ category: selectedCategory, product, quantity });
+        }
+    });
+
     if (selectedProducts.length === 0) {
         document.getElementById('responseMessage').textContent = "Por favor, selecione ao menos um produto.";
         document.getElementById('responseMessage').style.color = "red";
         return;
     }
 
-    // URL do webhook com o token adicionado
-    const url = `https://script.google.com/macros/s/AKfycbw3zgY3lZ9wqM0vxNMfLjMO2IFGh8oLqPmuR_vqBubv9KbQnEVKJ_a0UEWHs5mdYpG1Vw/exec`;
+    // Formata a mensagem
+    let message = `*Pedidos para a Categoria: ${selectedCategory}*\n\n`;
 
-
-// Agora a URL completa será construída utilizando a variável de ambiente.
-
-    fetch(url, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(selectedProducts)
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('responseMessage').textContent = "Dados enviados com sucesso!";
-        document.getElementById('responseMessage').style.color = "green";
-        document.getElementById('productForm').reset();
-        document.querySelectorAll('input[type="number"]').forEach(input => input.disabled = true);
-        document.querySelectorAll('input[type="text"]').forEach(input => input.style.display = 'none');
-        clearFormData(); // Limpa os dados do localStorage
-    })
-    .catch(error => {
-        document.getElementById('responseMessage').textContent = "Erro ao enviar os dados: " + error;
-        document.getElementById('responseMessage').style.color = "red";
+    selectedProducts.forEach(item => {
+        message += `*Produto*: ${item.product}\n*Quantidade*: ${item.quantity}\n`;
+        if (item.observation) {
+            message += `*Observação*: ${item.observation}\n`;
+        }
+        message += '\n'; // Adiciona uma linha em branco entre os produtos
     });
+
+    const phoneNumber = '5581999441494';
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+
+    // Exibe a mensagem de confirmação
+    document.getElementById('responseMessage').textContent = "Redirecionando para o WhatsApp...";
+    document.getElementById('responseMessage').style.color = "green";
+
+    // Limpa os campos do formulário
+    document.getElementById('productForm').reset();
+    
+    // Desativa os campos de quantidade e oculta os campos de observação
+    document.querySelectorAll('input[type="number"]').forEach(input => input.disabled = true);
+    document.querySelectorAll('input[type="text"].other-product-input').forEach(input => input.value = '');
+    document.querySelectorAll('input[name$="-observation"]').forEach(input => {
+        input.style.display = 'none';
+        input.value = '';
+    });
+
+    // Limpa os dados do localStorage após o envio
+    clearFormData();
+
+    // Redireciona para a área principal após alguns segundos
+    setTimeout(() => {
+        // Redireciona para a área principal (home)
+        document.getElementById('categorySelection').style.display = 'block';
+        document.getElementById('productSelection').style.display = 'none';
+        document.getElementById('responseMessage').textContent = "Você deseja solicitar outro estoque?";
+
+        // Oculta a mensagem após 3 segundos e mostra a pergunta
+        setTimeout(() => {
+            document.getElementById('responseMessage').textContent = "";
+            const confirmMessage = document.createElement('div');
+            confirmMessage.textContent = "Você deseja solicitar outro estoque?";
+            confirmMessage.style.color = "blue";
+            document.getElementById('categorySelection').appendChild(confirmMessage);
+        }, 3000);
+    }, 2000); // Tempo para redirecionar e mostrar a mensagem
 });
