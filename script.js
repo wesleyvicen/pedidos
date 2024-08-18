@@ -213,11 +213,8 @@ document.getElementById('productForm').addEventListener('submit', function(e) {
         return;
     }
 
-    // Coloque o token diretamente aqui
-    const token = process.env.WEBHOOK_TOKEN;
-
     // URL do webhook com o token adicionado
-    const url = `https://script.google.com/macros/s/${token}/exec`;
+    const url = `https://script.google.com/macros/s/AKfycbw3zgY3lZ9wqM0vxNMfLjMO2IFGh8oLqPmuR_vqBubv9KbQnEVKJ_a0UEWHs5mdYpG1Vw/exec`;
 
 
 // Agora a URL completa será construída utilizando a variável de ambiente.
