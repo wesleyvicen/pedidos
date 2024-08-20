@@ -141,59 +141,82 @@ const productsData = {
 
 // Função para salvar os dados no localStorage
 function saveFormData() {
-    const formData = {};
+    // Obtém o nome da categoria selecionada
+    const selectedCategory = document.getElementById('categorySelect').value;
 
+    if (!selectedCategory) return;
+
+    // Obtém os dados existentes do localStorage ou cria um novo objeto
+    const formData = JSON.parse(localStorage.getItem('formData')) || {};
+
+    // Garante que a categoria exista no formData
+    if (!formData[selectedCategory]) {
+        formData[selectedCategory] = [];
+    }
+
+    // Limpa os dados existentes da categoria antes de adicionar os novos dados
+    formData[selectedCategory] = [];
+
+    // Adiciona os produtos selecionados da categoria
     document.querySelectorAll('input[name="products"]:checked').forEach(checkbox => {
         const product = checkbox.value;
         const quantity = document.querySelector(`input[name="${product}-quantity"]`).value;
         const observationInput = document.querySelector(`input[name="${product}-observation"]`);
         const observation = observationInput ? observationInput.value : '';
 
-        formData[product] = { quantity, observation };
+        formData[selectedCategory].push({ product, quantity, observation });
     });
 
-    // Salva campos "Outro"
+    // Adiciona os campos "Outro" da categoria
     const otherFields = Array.from(document.querySelectorAll('.other-product-input'));
     otherFields.forEach(input => {
         const product = input.value.trim();
         if (product) {
             const quantity = input.nextElementSibling.value;
-            formData[product] = { quantity };
+            formData[selectedCategory].push({ product, quantity });
         }
     });
 
+    // Salva os dados atualizados no localStorage
     localStorage.setItem('formData', JSON.stringify(formData));
 }
+
 
 // Função para carregar os dados do localStorage
 function loadFormData() {
     const formData = JSON.parse(localStorage.getItem('formData')) || {};
 
-    Object.keys(formData).forEach(product => {
-        const checkbox = document.querySelector(`input[name="products"][value="${product}"]`);
-        const quantityInput = document.querySelector(`input[name="${product}-quantity"]`);
-        const observationInput = document.querySelector(`input[name="${product}-observation"]`);
+    const selectedCategory = document.getElementById('categorySelect').value;
 
-        if (checkbox && quantityInput) {
-            checkbox.checked = true;
-            quantityInput.value = formData[product].quantity;
-            quantityInput.disabled = false;
+    if (formData[selectedCategory]) {
+        formData[selectedCategory].forEach(item => {
+            const { product, quantity, observation } = item;
+            const checkbox = document.querySelector(`input[name="products"][value="${product}"]`);
+            const quantityInput = document.querySelector(`input[name="${product}-quantity"]`);
+            const observationInput = document.querySelector(`input[name="${product}-observation"]`);
 
-            if (observationInput) {
-                observationInput.value = formData[product].observation;
-                observationInput.style.display = 'block';
+            if (checkbox && quantityInput) {
+                checkbox.checked = true;
+                quantityInput.value = quantity;
+                quantityInput.disabled = false;
+
+                if (observationInput) {
+                    observationInput.value = observation;
+                    observationInput.style.display = 'block';
+                }
+            } else {
+                // Restaura os campos "Outro"
+                const otherField = createOtherField();
+                otherField.querySelector('.other-product-input').value = product;
+                const quantityInput = otherField.querySelector('input[type="number"]');
+                quantityInput.disabled = false;
+                quantityInput.value = quantity;
+                document.getElementById('productList').appendChild(otherField);
             }
-        } else {
-            // Restaura os campos "Outro"
-            const otherField = createOtherField();
-            otherField.querySelector('.other-product-input').value = product;
-            const quantityInput = otherField.querySelector('input[type="number"]');
-            quantityInput.disabled = false;
-            quantityInput.value = formData[product].quantity;
-            document.getElementById('productList').appendChild(otherField);
-        }
-    });
+        });
+    }
 }
+
 
 // Função para limpar os dados do localStorage após envio bem-sucedido
 function clearFormData() {
@@ -204,6 +227,9 @@ function createOtherField() {
     const otherItem = document.createElement('div');
     otherItem.classList.add('product-item');
 
+    const labelContainer = document.createElement('div');
+    labelContainer.classList.add('product-label-container');
+
     const productInput = document.createElement('input');
     productInput.type = 'text';
     productInput.placeholder = 'Digite outro produto';
@@ -212,15 +238,19 @@ function createOtherField() {
     const quantityInput = document.createElement('input');
     quantityInput.type = 'number';
     quantityInput.placeholder = 'Qtd';
-    quantityInput.min = 1;
+    quantityInput.min = 0; // Valor mínimo para 0
     quantityInput.disabled = true;
 
-    otherItem.appendChild(productInput);
-    otherItem.appendChild(quantityInput);
+    labelContainer.appendChild(productInput);
+    labelContainer.appendChild(quantityInput);
+
+    otherItem.appendChild(labelContainer);
 
     productInput.addEventListener('input', function () {
-        if (productInput.value.trim() !== '') {
+        const productName = productInput.value.trim();
+        if (productName !== '') {
             quantityInput.disabled = false;
+            saveFormData(); // Salva dados ao alterar o texto
             if (!otherItem.nextElementSibling || !otherItem.nextElementSibling.classList.contains('product-item')) {
                 const newOtherField = createOtherField();
                 otherItem.parentNode.appendChild(newOtherField);
@@ -228,14 +258,37 @@ function createOtherField() {
         } else {
             quantityInput.disabled = true;
             quantityInput.value = '';
+            if (productName !== '') {
+                saveFormData(); // Salva dados ao apagar o texto
+            }
+            otherItem.remove();
+
+            const formData = JSON.parse(localStorage.getItem('formData')) || {};
+            if (formData[productName]) {
+                delete formData[productName];
+                localStorage.setItem('formData', JSON.stringify(formData));
+            }
+
             if (otherItem.nextElementSibling && otherItem.nextElementSibling.classList.contains('product-item')) {
                 otherItem.nextElementSibling.remove();
             }
         }
     });
 
+    quantityInput.addEventListener('input', function () {
+        // Validação para garantir que o valor seja maior ou igual a 0
+        if (quantityInput.value === '') {
+            quantityInput.value = 0; // Define para 0 se o campo estiver vazio
+        } else if (quantityInput.value < 0) {
+            quantityInput.value = 0; // Ajusta automaticamente para 0 se for menor
+        }
+        saveFormData(); // Salva dados ao alterar a quantidade
+    });
+
     return otherItem;
 }
+
+
 
 document.getElementById('selectCategoryButton').addEventListener('click', function() {
     const selectedCategory = document.getElementById('categorySelect').value;
@@ -254,6 +307,9 @@ document.getElementById('selectCategoryButton').addEventListener('click', functi
             const productItem = document.createElement('div');
             productItem.classList.add('product-item');
 
+            const labelContainer = document.createElement('div');
+            labelContainer.classList.add('product-label-container');
+
             const productLabel = document.createElement('label');
             productLabel.classList.add('product-label');
             const productName = product.name;
@@ -269,8 +325,10 @@ document.getElementById('selectCategoryButton').addEventListener('click', functi
             quantityInput.min = 1;
             quantityInput.disabled = true;
 
-            productItem.appendChild(productLabel);
-            productItem.appendChild(quantityInput);
+            labelContainer.appendChild(productLabel);
+            labelContainer.appendChild(quantityInput);
+
+            productItem.appendChild(labelContainer);
 
             if (product.campoAberto) {
                 const observationInput = document.createElement('input');
@@ -287,6 +345,7 @@ document.getElementById('selectCategoryButton').addEventListener('click', functi
                         observationInput.style.display = 'none';
                         observationInput.value = '';
                     }
+                    saveFormData(); // Salva dados ao alterar o estado do checkbox
                 });
             }
 
@@ -310,12 +369,12 @@ document.getElementById('selectCategoryButton').addEventListener('click', functi
                     quantityInput.value = '';
                     quantityInput.disabled = true;
                 }
-                saveFormData();
+                saveFormData(); // Salva dados ao alterar o estado do checkbox
             });
         });
 
         document.querySelectorAll('input[type="number"], input[type="text"]').forEach(input => {
-            input.addEventListener('input', saveFormData);
+            input.addEventListener('input', saveFormData); // Salva dados ao alterar a quantidade ou texto
         });
 
         loadFormData();
