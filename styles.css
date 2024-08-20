@@ -185,3 +185,60 @@ input[type="checkbox"] :checked {
 .checkbox-group {
     margin-top: 10px;
 }
+
+#categorySelect {
+    width: 100%;
+    padding: 12px; /* Aumenta o padding para uma área de clique maior */
+    margin-bottom: 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    appearance: none; /* Remove a aparência padrão do select */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23400%406" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>'); /* Adiciona um ícone de seta */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#categorySelect:hover {
+    border-color: #722225; /* Muda a cor da borda ao passar o mouse */
+}
+
+#categorySelect:focus {
+    border-color: #722225;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5); /* Adiciona um efeito de foco */
+    outline: none; /* Remove a linha de foco padrão */
+}
+
+#categorySelect option {
+    background-color: #fff; /* Cor de fundo das opções */
+    color: #722225; /* Cor do texto */
+    padding: 10px; /* Adiciona padding para espaçamento interno */
+}
+
+/* Estilo para a opção selecionada */
+#categorySelect option:checked {
+    background-color: #722225; /* Cor de fundo para a opção selecionada */
+    color: #fff; /* Cor do texto da opção selecionada */
+}
+
+/* Estilo para as opções ao passar o mouse */
+#categorySelect option:hover {
+    background-color: #f0f0f0; /* Cor de fundo ao passar o mouse sobre as opções */
+    color: #722225; /* Cor do texto ao passar o mouse */
+}
+
+/* Ajustes específicos para dispositivos móveis */
+@media (max-width: 480px) {
+    #categorySelect {
+        font-size: 1.1rem; /* Aumenta o tamanho da fonte em dispositivos móveis */
+        padding: 14px; /* Aumenta o padding para tornar o botão maior */
+        background-position: right 15px center; /* Ajusta a posição da seta no select */
+        background-size: 16px; /* Aumenta o tamanho da seta */
+    }
+}
