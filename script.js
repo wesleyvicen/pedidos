@@ -423,8 +423,7 @@ document.getElementById('productForm').addEventListener('submit', function(e) {
         message += '\n'; // Adiciona uma linha em branco entre os produtos
     });
 
-    const phoneNumber = '5581999441494';
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 
     // Exibe a mensagem de confirmação
